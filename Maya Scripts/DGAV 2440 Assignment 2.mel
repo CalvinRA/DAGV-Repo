@@ -1,0 +1,114 @@
+//DGAV 2440 Assignment 2 Calvin Ambrose
+
+//The central variable that will alow for scaling the model
+float $size = 4;
+
+//Create Lower Body
+polySphere -radius $size -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 ($size * 2) 0;
+
+//Create Mid Body
+polySphere -radius $size -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 (($size * 3) + ($size / 2)) 0;
+scale -relative 3 1 3;
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 3) (($size * 3) + ($size / 2)) 0;
+scale -relative 0.5 1 0.75;
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 3)) (($size * 3) + ($size / 2)) 0;
+scale -relative 0.5 1 0.75;
+
+//Create Uper Body
+polySphere -radius $size -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 ($size * 4) 0;
+scale -relative 2 1 2;
+
+//Create Leg Base Joints
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size - ($size / 2)) ($size * 2) ($size - ($size / 2));
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size - ($size / 2))) ($size * 2) ($size - ($size / 2));
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size - ($size / 2)) ($size * 2) (-($size - ($size / 2)));
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size - ($size / 2))) ($size * 2) (-($size -($size / 2)));
+
+//Create Leg Thighs
+polyCylinder -radius ($size / 4) -height ($size * 2) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance $size ($size * 2) $size;
+rotate -relative -objectSpace 90 45 0;
+polyCylinder -radius ($size / 4) -height ($size * 2) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size)) ($size * 2) (-($size));
+rotate -relative -objectSpace 90 45 0;
+polyCylinder -radius ($size / 4) -height ($size * 2) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance $size ($size * 2) (-($size));
+rotate -relative -objectSpace 90 -45 0;
+polyCylinder -radius ($size / 4) -height ($size * 2) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size)) ($size * 2) $size;
+rotate -relative -objectSpace 90 -45 0;
+
+//Create Leg Knees
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) ($size * 2) ($size * 2);
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) ($size * 2) (-($size * 2));
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) ($size * 2) ($size * 2);
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) ($size * 2) (-($size * 2));
+
+//Create Leg Shins
+polyCylinder -radius ($size / 4) -height ($size + ($size / 2)) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) $size ($size * 2);
+polyCylinder -radius ($size / 4) -height ($size + ($size / 2)) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) $size ($size * 2);
+polyCylinder -radius ($size / 4) -height ($size + ($size / 2)) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) $size (-($size * 2));
+polyCylinder -radius ($size / 4) -height ($size + ($size / 2)) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) $size (-($size * 2));
+
+//Create Feet
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) ($size / 4) ($size * 2);
+scale -relative 1.5 0.5 1.5;
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) ($size / 4) (-($size * 2));
+scale -relative 1.5 0.5 1.5;
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) ($size / 4) ($size * 2);
+scale -relative 1.5 0.5 1.5;
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) ($size / 4) (-($size * 2));
+scale -relative 1.5 0.5 1.5;
+
+//Create Right Gun
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-(($size * 3) + ($size / 2))) (($size * 3) + ($size / 2)) 0;
+polyPipe -radius ($size / 4) -height ($size * 3) -thickness ($size / 8) -subdivisionsAxis 20 -subdivisionsHeight 1 -subdivisionsCaps 1 -axis 0 1 0 -createUVs 1 -roundCap 0 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-(($size * 3) + ($size / 2))) (($size * 3) + ($size / 2)) $size ;
+rotate -relative -objectSpace 90 0 0;
+polyPipe -radius ($size / 3) -height ($size * 2) -thickness ($size / 5) -subdivisionsAxis 20 -subdivisionsHeight 1 -subdivisionsCaps 1 -axis 0 1 0 -createUVs 1 -roundCap 0 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-(($size * 3) + ($size / 2))) (($size * 3) + ($size / 2)) ($size * 2) ;
+rotate -relative -objectSpace 90 0 0;
+
+//Create Left Gun
+polySphere -radius ($size / 2) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (($size * 3) + ($size / 2)) (($size * 3) + ($size / 2)) 0;
+polyPipe -radius ($size / 4) -height ($size * 3) -thickness ($size / 8) -subdivisionsAxis 20 -subdivisionsHeight 1 -subdivisionsCaps 1 -axis 0 1 0 -createUVs 1 -roundCap 0 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (($size * 3) + ($size / 2)) (($size * 3) + ($size / 2)) $size ;
+rotate -relative -objectSpace 90 0 0;
+polyPipe -radius ($size / 3) -height ($size * 2) -thickness ($size / 5) -subdivisionsAxis 20 -subdivisionsHeight 1 -subdivisionsCaps 1 -axis 0 1 0 -createUVs 1 -roundCap 0 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (($size * 3) + ($size / 2)) (($size * 3) + ($size / 2)) ($size * 2) ;
+rotate -relative -objectSpace 90 0 0;
+
+//Create Antennas
+polySphere -radius ($size / 4) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) ($size * 4) (-($size));
+polySphere -radius ($size / 4) -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) ($size * 4) (-($size));
+polyCone -radius ($size / 16) -height ($size * 3) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 0 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance (-($size * 2)) ($size * 5) (-(($size) + ($size / 4)));
+rotate -relative -objectSpace -15 0 0;
+polyCone -radius ($size / 16) -height ($size * 3) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 0 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance ($size * 2) ($size * 5) (-(($size) + ($size / 4)));
+rotate -relative -objectSpace -15 0 0;

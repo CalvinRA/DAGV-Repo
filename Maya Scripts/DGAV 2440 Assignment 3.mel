@@ -1,0 +1,19 @@
+//DGAV 2440 Assingment 3 Calvin Ambrose
+
+//Create Function To Make Stairs
+proc GenerateStaircase(int $width, int $height, int $depth, int $offset, int $rotation, int $count)
+{
+    for ($i = 0; $i < $count; $i++)
+    {
+    polyCube -width $width -height $height -depth $depth -subdivisionsX 1 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -createUVs 4 -constructionHistory 1;
+    move -relative -objectSpace -worldSpaceDistance $offset (($height) / 2) 0;
+    xform -relative -pivots (-$offset) (-($height)) 0;
+    move -relative -objectSpace -worldSpaceDistance 0 ($height * $i) 0;
+    rotate -relative -objectSpace 0 ($rotation * $i) 0;
+    }
+
+    polyCylinder -radius ($offset / 2) -height ($height * $count) -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+    move -relative -objectSpace -worldSpaceDistance 0 (($height * $count) / 2) 0;
+}
+
+GenerateStaircase(10, 2, 4, 10, 20, 35);

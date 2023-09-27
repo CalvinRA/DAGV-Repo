@@ -1,0 +1,66 @@
+//DGAV 2440 Assingment 1 Calvin Ambrose
+
+//Create SnowMan Base
+polySphere -radius 3 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 3 0;
+
+//Create SnowMan Middle
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+polySphere -e -radius 2;
+print (`polySphere -q -subdivisionsY`);
+move -relative -objectSpace -worldSpaceDistance 0 7 0;
+
+//Create SnowMan Head
+polySphere -radius 1.25 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 9.75 0;
+
+//Create Hat
+polyCylinder -radius 1 -height 1.9 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 11.75 0;
+polyCylinder -radius 1 -height .25 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 10.75 0;
+scale -relative 1.4 1 1.4;
+//I hate modeling this way
+
+//Create Left Arm
+polyCylinder -radius .2 -height 3 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 3 8 0;
+rotate -relative -objectSpace 0 0 -60;
+polyCylinder -radius .2 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 4.7 9.5 0;
+rotate -relative -objectSpace 0 0 -30;
+
+//Create Right Arm
+polyCylinder -radius .2 -height 3 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance -3 8 0;
+rotate -relative -objectSpace 0 0 60;
+polyCylinder -radius .2 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance -4.7 9.5 0;
+rotate -relative -objectSpace 0 0 30;
+
+//Create Face
+polyCone -radius 1 -height 2 -subdivisionsX 20 -subdivisionsY 1 -subdivisionsZ 0 -axis 0 1 0 -roundCap 0 -createUVs 3 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 9.75 -1.6;
+rotate -relative -objectSpace -90 0 0;
+scale -relative .25 .5 .25;
+polySphere -radius .2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance -0.5 10.25 -1;
+rotate -relative -objectSpace 15 20 0;
+scale -relative 1 1 0.5;
+polySphere -radius .2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0.5 10.25 -1;
+rotate -relative -objectSpace 15 -20 0;
+scale -relative 1 1 0.5;
+
+//Create Buttons
+polySphere -radius .2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 7 -2;
+scale -relative 1 1 0.5;
+polySphere -radius .2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 7.75 -1.85;
+scale -relative 1 1 0.5;
+rotate -relative -objectSpace 20 0 0;
+polySphere -radius .2 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative -objectSpace -worldSpaceDistance 0 8.3 -1.5;
+scale -relative 1 1 0.5;
+rotate -relative -objectSpace 40 0 0;
