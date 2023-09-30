@@ -58,10 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-# Images and Movies from Maya
-.png
-.mp4
-
 *.DS_Store
 
 Basics/001 Conventions and Syntax/.idea/.idea.001 Conventions and Syntax.dir/.idea/
