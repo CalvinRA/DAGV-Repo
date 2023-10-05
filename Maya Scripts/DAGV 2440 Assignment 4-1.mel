@@ -1,0 +1,22 @@
+//DGAV 2440 Assingment 4.1 Calvin Ambrose
+
+//Addition Function
+global proc Addtition()
+
+//Subtraction Function
+global proc Subtraction()
+
+//Mutliplication Function
+global proc Mutliplication()
+
+//Divivsion Funtion
+global proc Divivsion()
+
+//Power Function
+global proc Power()
+
+//Mean Function
+global proc Mean()
+
+//Median Function
+global proc Median()
