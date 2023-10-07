@@ -1,0 +1,212 @@
+//DGAV 2440 Assingment 4.2 Calvin Ambrose
+
+//Addition Function
+global proc Addition(float $input[])
+{
+    float $total;
+    //add numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total += $input[$i];
+            print ("+" + $input[$i]);
+        }
+    }
+    //return total
+    print ("=" + $total + ".\n");
+}
+
+//Subtraction Function
+global proc Subtraction(float $input[])
+{
+        float $total;
+    //subtract numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total -= $input[$i];
+            print ("-" + $input[$i]);
+        }
+    }
+    //return total
+    print ("=" + $total + ".\n");
+}
+
+//Mutliplication Function
+global proc Multiplication(float $input[])
+{
+     float $total;
+    //mutliply numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total *= $input[$i];
+            print ("*" + $input[$i]);
+        }
+    }
+    //return total
+    print ("=" + $total + ".\n");
+}
+
+//Divivsion Funtion
+global proc Division(float $input[])
+{
+     float $total;
+    //divide numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total /= $input[$i];
+            print ("/" + $input[$i]);
+        }
+    }
+    //return total
+    print ("=" + $total + ".\n");
+}
+
+//Power Function
+global proc Power(float $input[])
+{
+    float $total;
+    float $power;
+    //check if there are only two
+    if(size($input) < 2)
+    {
+        print("There are not enough numbers to use for the power calculation. \n");
+    }
+    else if(size($input) > 2)
+    {
+        print("There are too many numbers to use for the power calculatiion. \n");
+    }
+    //mutilply first number buy itself by the number of second number
+    else
+    {
+        for ($i = 0; $i < $input[1]; $i++)
+        {
+            if($i == 0)
+            {
+                $total = $input[0];
+                $power = $total;
+            }
+            else if($i > 0)
+            {
+                $total = $total * $power;
+            }
+        }
+        //return total
+        print($input[0] + "^" + $input[1] + "=" + $total + ".\n");
+    }
+}
+
+//Mean Function
+global proc Mean(float $input[])
+{
+    float $total;
+    float $average;
+    //add numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        $total += $input[$i];
+    }
+    //divide total by lenght of array
+    $average = $total / size($input);
+    //return average
+    print("The average of ");
+
+    for ($i = 0; $i < size($input); $i++)
+    {
+        print($input[$i] + ", ");
+    }
+    print("is " + $average + ".\n");
+}
+//Median Function
+global proc Median(float $input[])
+{
+    //check if the total of numbers is even or odd
+    float $median;
+    float $sortedInput[] = `sort $input`;
+    int $count = size($sortedInput);
+    //if even, add the two numbers closest to the middle together and divide by two
+    if($count % 2 == 0)
+    {
+        int $middleIndex1 = ($count / 2) - 1;
+        int $middleIndex2= $count / 2;
+        $median= ($sortedInput[$middleIndex1] + $sortedInput[$middleIndex2]) / 2.0;
+    }
+    //else odd, determin the number with the value that is in the middle
+    else
+    {
+        int $middleIndex = ($count - 1) / 2;
+        $median = $sortedInput[$middleIndex];
+    }
+    //retrun median
+    print("The median of ");
+    for ($i = 0; $i < size($input); $i++)
+    {
+        print($input[$i] + ", ");
+    }
+    print("is " + $median + ".\n"); 
+}
+
+//Calculator Master Function
+global proc Calculator(string $opperation, float $userInput[])
+{
+    if($opperation == "Addition")
+    {
+        Addition($userInput);
+    }
+    else if($opperation == "Subtraction")
+    {
+        Subtraction($userInput);
+    }
+    else if($opperation == "Multiplication")
+    {
+        Multiplication($userInput);
+    }
+    else if($opperation == "Division")
+    {
+        Division($userInput);
+    }
+    else if($opperation == "Power")
+    {
+        Power($userInput);
+    }
+    else if($opperation == "Mean")
+    {
+        Mean($userInput);
+    }
+        else if($opperation == "Median")
+    {
+        Median($userInput);
+    }
+    else
+    {
+        print("Please input a valid opperation. \n");
+    }
+}
+
+Calculator("Median", {1.1, 2.2, 3.3});
