@@ -1,0 +1,279 @@
+//DGAV 2440 Assingment 4.2 Calvin Ambrose
+
+//Update all functions to use buttons
+
+//Addition Function
+global proc Add_ButtonCmd()
+{
+    string $numberField1 = `optionVar -q "CalNumber1"`;
+    string $numberField2 = `optionVar -q "CalNumber2"`;
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalResult"`;
+
+    float $firstNumber = `floatField -q -value $numberField1`;
+    float $secondNumber = `floatField -q -value $numberField2`;
+    
+    float $input[] = {$firstNumber, $secondNumber};
+    float $total;
+
+    //add numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            //print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total += $input[$i];
+            //print ("+" + $input[$i]);
+        }
+    }
+    //return total
+    textField -e -text $total $resultField;
+}
+
+//Subtraction Function
+global proc Subtract_ButtonCmd()
+{
+    string $numberField1 = `optionVar -q "CalNumber1"`;
+    string $numberField2 = `optionVar -q "CalNumber2"`;
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalResult"`;
+
+    float $firstNumber = `floatField -q -value $numberField1`;
+    float $secondNumber = `floatField -q -value $numberField2`;
+    
+    float $input[] = {$firstNumber, $secondNumber};
+    float $total;
+
+    //subtract numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            //print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total -= $input[$i];
+            //print ("-" + $input[$i]);
+        }
+    }
+    //return total
+    textField -e -text $total $resultField;
+}
+
+//Mutliplication Function
+global proc Muliply_ButtonCmd()
+{
+    string $numberField1 = `optionVar -q "CalNumber1"`;
+    string $numberField2 = `optionVar -q "CalNumber2"`;
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalResult"`;
+
+    float $firstNumber = `floatField -q -value $numberField1`;
+    float $secondNumber = `floatField -q -value $numberField2`;
+    
+    float $input[] = {$firstNumber, $secondNumber};
+    float $total;
+    
+    //mutliply numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            //print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total *= $input[$i];
+            //print ("*" + $input[$i]);
+        }
+    }
+    //return total
+    textField -e -text $total $resultField;
+}
+
+//Divivsion Funtion
+global proc Divide_ButtonCmd()
+{
+    string $numberField1 = `optionVar -q "CalNumber1"`;
+    string $numberField2 = `optionVar -q "CalNumber2"`;
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalResult"`;
+
+    float $firstNumber = `floatField -q -value $numberField1`;
+    float $secondNumber = `floatField -q -value $numberField2`;
+    
+    float $input[] = {$firstNumber, $secondNumber};
+    float $total;
+    
+    //divide numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        if($i == 0)
+        {
+            $total = $input[$i];
+            //print ($input[$i]);
+        }
+        else if($i > 0)
+        {
+            $total /= $input[$i];
+            //print ("/" + $input[$i]);
+        }
+    }
+    //return total
+    textField -e -text $total $resultField;
+}
+
+//Power Function
+global proc Power_ButtonCmd()
+{
+    string $numberField1 = `optionVar -q "CalNumber1"`;
+    string $numberField2 = `optionVar -q "CalNumber2"`;
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalResult"`;
+
+    float $firstNumber = `floatField -q -value $numberField1`;
+    float $secondNumber = `floatField -q -value $numberField2`;
+    
+    float $input[] = {$firstNumber, $secondNumber};
+    float $total;
+    float $power;
+
+    //check if there are only two
+    if(size($input) < 2)
+    {
+        //print("There are not enough numbers to use for the power calculation. \n");
+    }
+    else if(size($input) > 2)
+    {
+        //print("There are too many numbers to use for the power calculatiion. \n");
+    }
+    //mutilply first number buy itself by the number of second number
+    else
+    {
+        for ($i = 0; $i < $input[1]; $i++)
+        {
+            if($i == 0)
+            {
+                $total = $input[0];
+                $power = $total;
+            }
+            else if($i > 0)
+            {
+                $total = $total * $power;
+            }
+        }
+        //return total
+    textField -e -text $total $resultField;
+    }
+}
+
+//Mean Function
+global proc Mean_ButtonCmd()
+{
+    string $numberField1 = `optionVar -q "CalNumber1"`;
+    string $numberField2 = `optionVar -q "CalNumber2"`;
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalResult"`;
+
+    float $firstNumber = `floatField -q -value $numberField1`;
+    float $secondNumber = `floatField -q -value $numberField2`;
+    
+    float $input[] = {$firstNumber, $secondNumber};
+    float $total;   
+    float $average;
+
+    //add numbers
+    for ($i = 0; $i < size($input); $i++)
+    {
+        $total += $input[$i];
+    }
+    //divide total by lenght of array
+    $average = $total / size($input);
+    //return average
+    //print("The average of ");
+
+    //for ($i = 0; $i < size($input); $i++)
+    //{
+    //    print($input[$i] + ", ");
+    //}
+    textField -e -text $average $resultField;
+}
+//Median Function
+global proc Median_ButtonCmd()
+{
+    string $numberField1 = `optionVar -q "CalNumber1"`;
+    string $numberField2 = `optionVar -q "CalNumber2"`;
+    string $operField = `optionVar -q "CalOperation"`;
+    string $resultField = `optionVar -q "CalResult"`;
+
+    float $firstNumber = `floatField -q -value $numberField1`;
+    float $secondNumber = `floatField -q -value $numberField2`;
+    
+    float $input[] = {$firstNumber, $secondNumber};
+    
+    //check if the total of numbers is even or odd
+    float $median;
+    float $sortedInput[] = `sort $input`;
+    int $count = size($sortedInput);
+    //if even, add the two numbers closest to the middle together and divide by two
+    if($count % 2 == 0)
+    {
+        int $middleIndex1 = ($count / 2) - 1;
+        int $middleIndex2= $count / 2;
+        $median= ($sortedInput[$middleIndex1] + $sortedInput[$middleIndex2]) / 2.0;
+    }
+    //else odd, determin the number with the value that is in the middle
+    else
+    {
+        int $middleIndex = ($count - 1) / 2;
+        $median = $sortedInput[$middleIndex];
+    }
+    //retrun median
+    //print("The median of ");
+    //for ($i = 0; $i < size($input); $i++)
+    //{
+    //    print($input[$i] + ", ");
+    //}
+    textField -e -text $median $resultField; 
+}
+
+//Calculator Master Function Removed replaced with buttons
+
+//Calculator("Median", {1.1, 2.2, 3.3});
+
+//Create Window
+//Convert Buttons into master function
+global proc UserUi()
+{
+    string $myWindow = "user_ui";
+
+    if (`window -exists $myWindow`)
+        deleteUI $myWindow;
+
+    $myWindow = `window -title "Calculator" -widthHeight 300 400 -resizeToFitChildren 1 $myWindow`;
+
+    // Create a main column layout
+    string $topColumn = `columnLayout -parent $myWindow -adjustableColumn true`;
+
+    optionVar -stringValue "CalNumber1" `floatField -parent $topColumn`;
+    optionVar -stringValue "CalNumber2" `floatField -parent $topColumn`;
+    button -parent $topColumn -label "Add" -command "Add_ButtonCmd";
+    button -parent $topColumn -label "Subtract" -command "Subtract_ButtonCmd";
+    button -parent $topColumn -label "Muliply" -command "Muliply_ButtonCmd";
+    button -parent $topColumn -label "Divide" -command "Divide_ButtonCmd";
+    button -parent $topColumn -label "Power" -command "Power_ButtonCmd";
+    button -parent $topColumn -label "Average" -command "Mean_ButtonCmd";
+    button -parent $topColumn -label "Median" -command "Median_ButtonCmd";   
+    optionVar -stringValue "CalResult" `textField - parent $topColumn -editable 0`;
+
+    showWindow $myWindow;
+}
+
+UserUi();
