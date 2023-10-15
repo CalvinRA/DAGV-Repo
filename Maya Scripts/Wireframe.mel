@@ -1,0 +1,6 @@
+//DAGV 2440 Pop Quiz Calvin Ambrose
+
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2 -constructionHistory 1;
+
+setAttr "pSphereShape1.overrideEnabled" 1;
+

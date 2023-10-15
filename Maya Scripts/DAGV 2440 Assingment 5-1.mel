@@ -1,0 +1,97 @@
+//DAGV 2440 Assingment 5-1 Calvin Ambrose
+
+//Create duplication function
+//Number of duplicates & randge of numbers used to randomize for each axis
+global proc placementGenerator(float $xMin, float $xMax, float $yMin, float $yMax, float $zMin, float $zMax, int $numDupes)
+{
+
+    //Store selected objects as variables
+    string $select[] = `ls -selection`;
+
+    for ($i = 0; $i < size($select); $i++)
+    {
+
+        //Randomly place each duplicate object throught sceen within created range
+        for ($j = 0; $j < $numDupes; $j++)
+        {
+            string $dupes[] = `duplicate -rr $select[$i]`;
+            string $dupe = $dupes[0];
+
+            float $randX = `rand $xMin $xMax`;
+            float $randY = `rand $yMin $yMax`;
+            float $randZ = `rand $zMin $zMax`;
+
+            xform -worldSpace - translation $randX $randY $randZ $dupe;
+        }
+    }
+}
+
+//Create Window/Button Funtion
+global proc FT_ButtonCmd()
+{
+    string $xMinField = `optionVar -q "uixMinField"`;
+    string $xMaxField = `optionVar -q "uixMaxField"`;
+    string $yMinField = `optionVar -q "uixMinField"`;
+    string $yMaxField = `optionVar -q "uixMaxField"`;
+    string $zMinField = `optionVar -q "uixMinField"`;
+    string $zMaxField = `optionVar -q "uixMaxField"`;
+    string $numDupesField = `optionVar -q "uinumDupesField"`;
+
+    string $xLow = `floatField -q -value $xMinField`;
+    string $xHigh = `floatField -q -value $xMaxField`;
+    string $yLow = `floatField -q -value $yMinField`;
+    string $yHigh = `floatField -q -value $yMaxField`;
+    string $zLow = `floatField -q -value $zMinField`;
+    string $zHigh = `floatField -q -value $zMaxField`;
+    string $numDupesDo = `intField -q -value $numDupesField`;
+
+    placementGenerator($xLow, $xHigh, $yLow, $yHigh, $zLow, $zHigh, $numDupesDo);
+}
+
+//Crate Window
+global proc UserUi()
+{
+string $myWindow = "user_ui";
+
+if (`window -exists $myWindow`)
+    deleteUI $myWindow;
+
+$myWindow = `window -title "Placement Generator" -widthHeight 300 400 -resizeToFitChildren 1 $myWindow`;
+
+// Create a main column layout
+string $topColumn = `columnLayout -parent $myWindow -adjustableColumn true`;
+
+// Create row layouts for X, Y, and Z input
+string $xRowText = `rowLayout -numberOfColumns 2 -columnWidth2 100 100 -parent $topColumn`;
+string $xRowNumber = `rowLayout -numberOfColumns 2 -columnWidth2 100 100 -parent $topColumn`;
+string $yRowText = `rowLayout -numberOfColumns 2 -columnWidth2 100 100 -parent $topColumn`;
+string $yRowNumber = `rowLayout -numberOfColumns 2 -columnWidth2 100 100 -parent $topColumn`;
+string $zRowText = `rowLayout -numberOfColumns 2 -columnWidth2 100 100 -parent $topColumn`;
+string $zRowNumber = `rowLayout -numberOfColumns 2 -columnWidth2 100 100 -parent $topColumn`;
+
+string $bottomColumn = `columnLayout -parent $topColumn`;
+
+// Create floatFields for input
+text -label "X Min:" -parent $xRowText;
+optionVar -stringValue "uixMinField" `floatField -parent $xRowNumber`;
+text -label "X Max:" -parent $xRowText;
+optionVar -stringValue "uixMaxField" `floatField -parent $xRowNumber`;
+
+text -label "Y Min:" -parent $yRowText;
+optionVar -stringValue "uiyMinField" `floatField -parent $yRowNumber`;
+text -label "Y Max:" -parent $yRowText;
+optionVar -stringValue "uiyMaxField" `floatField -parent $yRowNumber`;
+
+text -label "Z Min:" -parent $zRowText;
+optionVar -stringValue "uizMinField" `floatField -parent $zRowNumber`;
+text -label "Z Max:" -parent $zRowText;
+optionVar -stringValue "uizMaxField" `floatField -parent $zRowNumber`;
+
+text -label "Total number of random objects" - parent $bottomColumn;
+optionVar - stringValue "uinumDupesField" ` intField - parent $bottomColumn`;
+
+//Create button to run function
+button -parent $bottomColumn -label "Generate" -command "FT_ButtonCmd";
+
+showWindow $myWindow;
+}
