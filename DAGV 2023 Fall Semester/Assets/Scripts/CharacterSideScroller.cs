@@ -6,13 +6,16 @@ public class CharacterSideScroller : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 4f;
     public float gravity = -9.81f;
+    public int maxJumps = 2;
 
     private CharacterController controller;
     private Vector3 velocity;
+    private int jumpsRemaining;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        jumpsRemaining = maxJumps;
     }
 
     private void Update()
@@ -20,7 +23,8 @@ public class CharacterSideScroller : MonoBehaviour
         // Horizontal movement
         var moveInput = Input.GetAxis("Horizontal");
         var moveDirection = new Vector3(moveInput, 0f, 0f) * moveSpeed;
-
+        
+        
         // Apply gravity
         if (!controller.isGrounded)
         {
@@ -29,12 +33,17 @@ public class CharacterSideScroller : MonoBehaviour
         else
         {
             velocity.y = 0;
+            jumpsRemaining = maxJumps;
         }
 
         // Jumping
-        if (controller.isGrounded && Input.GetButton("Jump"))
+        if (Input.GetButton("Jump"))
         {
-            velocity.y = Mathf.Sqrt(jumpForce * -2 * gravity);
+            if (controller.isGrounded || jumpsRemaining > 0)
+            {
+                velocity.y = Mathf.Sqrt(jumpForce * -2 * gravity);
+                jumpsRemaining--;
+            }
         }
 
         // Apply movement and handle collisions
