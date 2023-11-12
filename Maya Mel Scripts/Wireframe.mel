@@ -24,5 +24,3 @@ proc ChangeColor(int $color)
         }
     }
 }
-
-ChangeColor();
