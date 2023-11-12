@@ -2,25 +2,30 @@
 
 proc ChangeColor(int $color)
 {
-    string $sel[] = `ls - selection`;
+    string $sel[] = `ls -selection`;
 
-    if(size($sels) == 0)
+    if(size($sel) == 0)
         error("Select object before running ChangeColor().");
 
     if($color < 0 || $color > 31)
     {
         $color = 0;
-        warning("Color argument must be withing range of 0 to 31. Value defaulted to 0");
+        warning("Color argument must be within the range of 0 to 31. Value defaulted to 0");
     }
 
-    for ($i = 0; $i < size($cels); $i++)
+    for ($i = 0; $i < size($sel); $i++)
     {
-        string $shapes[] `listRelatives -shapes $sels[$i]`;
+        string $shapes[] = `listRelatives -shapes $sel[$i]`;
 
         for ($shape in $shapes)
         {
-            setAttr ($shape + ".overRideEnabled`");
-            setAttr ($shape + ".ocerrideColor") $color;
+            // Enable the override for colors
+            setAttr ($shape + ".overrideEnabled") 1;
+            
+            // Set the override color
+            setAttr ($shape + ".overrideColor") $color;
         }
     }
 }
+
+ChangeColor(1);

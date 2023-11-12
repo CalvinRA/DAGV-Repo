@@ -5,7 +5,6 @@
 # models
 *.mb filter=lfs diff=lfs merge=lfs -text
 *.MB filter=lfs diff=lfs merge=lfs -text
-*.ma filter=lfs diff=lfs merge=lfs -text
 *.MA filter=lfs diff=lfs merge=lfs -text
 *.mlt filter=lfs diff=lfs merge=lfs -text
 *.MLT filter=lfs diff=lfs merge=lfs -text

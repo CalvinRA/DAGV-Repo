@@ -1,3 +1,5 @@
+#DAGV 2440 Assignment 7 Calvin Ambrose
+
 import maya.cmds as cmds
 
 def change_color(color):
