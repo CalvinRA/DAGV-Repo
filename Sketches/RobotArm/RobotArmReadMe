@@ -1,0 +1,10 @@
+These are the three different Robot arm sketches I made.
+
+  The first one is a more traditional industrial arm with even lengthed arm sections. 
+  The main rotation joint in the base can move 360 degrees with every other joint bending in one diretion.
+
+  The second sketch is inteded to look weird with rounded shapes and the sizes of the arm parts uneaven to help make an alien look to the arm.
+  The joints can all been in multipule directions with no clear way to show how they connet.
+
+  The third arm is focues with having pistons in the sections give the arm the added functionality of addjusting it's own length to suit it's current needs.
+  I havn't decided if they pistons pices or allowthe joints to do the rotations of the arm.
