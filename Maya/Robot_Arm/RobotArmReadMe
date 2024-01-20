@@ -3,3 +3,5 @@ Began Work on Robot arm model based on concept sketches. I also remembered my fa
 1/17/24
 Finished Working on Robot Arm Geo. I found that adding detail to this without losing the feel of the arm to be difficult. I tried extruding different parts of the model but got some strand results.
 In the end, I think I was able to add detail by adding and editing shapes here and there and gave the arm a little bit of character in its shape that felt right to me after messing around with different details. 
+1-19/24
+The robot arm is now UV'd and ready for Texturing. The process was fairly straightforward, few problems were encountered with the geo so not much time was needed to fix errors.
