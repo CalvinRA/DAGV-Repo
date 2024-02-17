@@ -1,6 +1,6 @@
 //Maya ASCII 2022 scene
-//Name: DAGV 233L bot_model.ma
-//Last modified: Fri, Feb 16, 2024 01:58:02 PM
+//Name: DAGV 233L bot_rig.ma
+//Last modified: Fri, Feb 16, 2024 02:01:31 PM
 //Codeset: 1252
 requires maya "2022";
 requires "stereoCamera" "10.0";
@@ -11,12 +11,12 @@ fileInfo "product" "Maya 2022";
 fileInfo "version" "2022";
 fileInfo "cutIdentifier" "202102181415-29bfc1879c";
 fileInfo "osv" "Windows 10 Home v2009 (Build: 22621)";
-fileInfo "UUID" "96C4DCD6-4C6F-555F-A357-C09F46FE6E3F";
+fileInfo "UUID" "C72A9C25-41A7-6248-E477-3A8970196426";
 createNode transform -s -n "persp";
 	rename -uid "EBB779B0-44CB-7CFD-F701-378E7642E03F";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 0.66735593279248917 12.59078033122093 44.487560898740561 ;
-	setAttr ".r" -type "double3" 353.06164723113216 360.20000000000937 -359.99999999991002 ;
+	setAttr ".t" -type "double3" 1.0158235146071806 16.658340952061593 38.346342601780066 ;
+	setAttr ".r" -type "double3" 347.06164723112687 359.40000000000731 -359.99999999990888 ;
 	setAttr ".rp" -type "double3" 0 -4.4408920985006262e-16 8.8817841970012523e-16 ;
 	setAttr ".rpt" -type "double3" -2.6661306550949801e-15 -1.0100385458569861e-15 -8.7126558322839665e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
@@ -24,7 +24,7 @@ createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".pze" yes;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 41.952192900591335;
+	setAttr ".coi" 36.24416564071916;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -22083,6 +22083,41 @@ createNode mesh -n "Body_Connector_GeoShape" -p "Body_Connector_Geo";
 	setAttr ".pd[1]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 	setAttr ".ai_translator" -type "string" "polymesh";
+createNode parentConstraint -n "Body_Connector_Geo_parentConstraint1" -p "Body_Connector_Geo";
+	rename -uid "0BB2CF77-43CA-5FC0-627B-1DBD004274BE";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Spine_Bottom_CtrlW0" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr ".tg[0].tot" -type "double3" 0 0.68658256530761719 0 ;
+	setAttr -k on ".w0";
+createNode scaleConstraint -n "Body_Connector_Geo_scaleConstraint1" -p "Body_Connector_Geo";
+	rename -uid "C17104CC-4B2C-314D-C065-7BBF459D63B1";
+	addAttr -dcb 0 -ci true -k true -sn "w0" -ln "Spine_Bottom_CtrlW0" -dv 1 -min 0 
+		-at "double";
+	setAttr -k on ".nds";
+	setAttr -k off ".v";
+	setAttr -k off ".tx";
+	setAttr -k off ".ty";
+	setAttr -k off ".tz";
+	setAttr -k off ".rx";
+	setAttr -k off ".ry";
+	setAttr -k off ".rz";
+	setAttr -k off ".sx";
+	setAttr -k off ".sy";
+	setAttr -k off ".sz";
+	setAttr ".erp" yes;
+	setAttr -k on ".w0";
 createNode transform -n "Body_1_Geo" -p "Geometry";
 	rename -uid "B6D0BFDA-443B-7574-2D73-19B2D0AC7E16";
 	setAttr ".rp" -type "double3" 0 7.3869705200195312 0 ;
@@ -82054,7 +82089,7 @@ createNode poseInterpolatorManager -n "poseInterpolatorManager";
 	rename -uid "2F672270-4B3B-5E0B-6194-5084CAE1B184";
 createNode displayLayerManager -n "layerManager";
 	rename -uid "F5FC5477-48F5-59C5-FCB2-92BEADA25C7C";
-	setAttr ".cdl" 2;
+	setAttr ".cdl" 1;
 	setAttr -s 4 ".dli[1:3]"  1 2 3;
 	setAttr -s 4 ".dli";
 createNode displayLayer -n "defaultLayer";
@@ -83017,6 +83052,43 @@ connectAttr "Back_Left_Leg_2_Ctrl.s" "Back_Left_Leg_2_Geo_scaleConstraint1.tg[0]
 connectAttr "Back_Left_Leg_2_Ctrl.pm" "Back_Left_Leg_2_Geo_scaleConstraint1.tg[0].tpm"
 		;
 connectAttr "Back_Left_Leg_2_Geo_scaleConstraint1.w0" "Back_Left_Leg_2_Geo_scaleConstraint1.tg[0].tw"
+		;
+connectAttr "Body_Connector_Geo_parentConstraint1.ctx" "Body_Connector_Geo.tx";
+connectAttr "Body_Connector_Geo_parentConstraint1.cty" "Body_Connector_Geo.ty";
+connectAttr "Body_Connector_Geo_parentConstraint1.ctz" "Body_Connector_Geo.tz";
+connectAttr "Body_Connector_Geo_parentConstraint1.crx" "Body_Connector_Geo.rx";
+connectAttr "Body_Connector_Geo_parentConstraint1.cry" "Body_Connector_Geo.ry";
+connectAttr "Body_Connector_Geo_parentConstraint1.crz" "Body_Connector_Geo.rz";
+connectAttr "Body_Connector_Geo_scaleConstraint1.csx" "Body_Connector_Geo.sx";
+connectAttr "Body_Connector_Geo_scaleConstraint1.csy" "Body_Connector_Geo.sy";
+connectAttr "Body_Connector_Geo_scaleConstraint1.csz" "Body_Connector_Geo.sz";
+connectAttr "Body_Connector_Geo.ro" "Body_Connector_Geo_parentConstraint1.cro";
+connectAttr "Body_Connector_Geo.pim" "Body_Connector_Geo_parentConstraint1.cpim"
+		;
+connectAttr "Body_Connector_Geo.rp" "Body_Connector_Geo_parentConstraint1.crp";
+connectAttr "Body_Connector_Geo.rpt" "Body_Connector_Geo_parentConstraint1.crt";
+connectAttr "Spine_Bottom_Ctrl.t" "Body_Connector_Geo_parentConstraint1.tg[0].tt"
+		;
+connectAttr "Spine_Bottom_Ctrl.rp" "Body_Connector_Geo_parentConstraint1.tg[0].trp"
+		;
+connectAttr "Spine_Bottom_Ctrl.rpt" "Body_Connector_Geo_parentConstraint1.tg[0].trt"
+		;
+connectAttr "Spine_Bottom_Ctrl.r" "Body_Connector_Geo_parentConstraint1.tg[0].tr"
+		;
+connectAttr "Spine_Bottom_Ctrl.ro" "Body_Connector_Geo_parentConstraint1.tg[0].tro"
+		;
+connectAttr "Spine_Bottom_Ctrl.s" "Body_Connector_Geo_parentConstraint1.tg[0].ts"
+		;
+connectAttr "Spine_Bottom_Ctrl.pm" "Body_Connector_Geo_parentConstraint1.tg[0].tpm"
+		;
+connectAttr "Body_Connector_Geo_parentConstraint1.w0" "Body_Connector_Geo_parentConstraint1.tg[0].tw"
+		;
+connectAttr "Body_Connector_Geo.pim" "Body_Connector_Geo_scaleConstraint1.cpim";
+connectAttr "Spine_Bottom_Ctrl.s" "Body_Connector_Geo_scaleConstraint1.tg[0].ts"
+		;
+connectAttr "Spine_Bottom_Ctrl.pm" "Body_Connector_Geo_scaleConstraint1.tg[0].tpm"
+		;
+connectAttr "Body_Connector_Geo_scaleConstraint1.w0" "Body_Connector_Geo_scaleConstraint1.tg[0].tw"
 		;
 connectAttr "Body_1_Geo_parentConstraint1.ctx" "Body_1_Geo.tx";
 connectAttr "Body_1_Geo_parentConstraint1.cty" "Body_1_Geo.ty";
@@ -86703,4 +86775,4 @@ connectAttr "groupId517.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId518.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId519.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId520.msg" ":initialShadingGroup.gn" -na;
-// End of DAGV 233L bot_model.ma
+// End of DAGV 233L bot_rig.ma
