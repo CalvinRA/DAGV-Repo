@@ -68,3 +68,8 @@ crashlytics-build.properties
 /HoudiniEngineAssetCache*/
 
 *.hip
+Maya/saloon_render/scenes/.mayaSwatches/saloon_Light_render_cam.ma.swatches
+
+Maya/saloon_render/scenes/saloon_Light_render_cam.ma
+
+Maya/saloon_render/scenes/saloon_render_cam.ma
