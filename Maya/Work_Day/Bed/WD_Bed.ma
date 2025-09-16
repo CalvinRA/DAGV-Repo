@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: WD_Bed.ma
-//Last modified: Tue, Sep 02, 2025 10:15:50 AM
+//Last modified: Tue, Sep 02, 2025 10:47:14 AM
 //Codeset: 1252
 requires maya "2024";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.3.4.1";
@@ -11,7 +11,7 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 22631)";
-fileInfo "UUID" "72BD00AC-459D-78F7-157B-018AEB188492";
+fileInfo "UUID" "7418998B-4517-0AC8-94AB-8A86C06CD245";
 createNode transform -s -n "persp";
 	rename -uid "09453533-462A-7689-CCF4-AB8EAA87A8BC";
 	setAttr ".v" no;
@@ -38800,20 +38800,20 @@ createNode mesh -n "PillowShape" -p "Pillow";
 		1797 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "B1E2CD5E-4E71-B6E1-2215-4E94EBFF28EA";
+	rename -uid "0340CF6A-4883-8DF4-3C69-05B5B18D1497";
 	setAttr -s 4 ".lnk";
 	setAttr -s 4 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "7F5445C7-47E5-8B60-BC1E-CD83D69643C1";
+	rename -uid "031FBBC4-4398-0CB6-3A5E-749226E04865";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "A80D80F1-4A11-C1F8-BE10-E5BBD893272D";
+	rename -uid "A39CDC10-48E5-4720-B8B7-D487E382C0F0";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "A92FBDAC-42F0-DAD7-A99C-1F82DA7D6942";
+	rename -uid "D58B0D25-4DD5-CD03-434A-BDB649F77330";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "7D3D2264-4BDE-F9CC-5336-F98EBEF7C303";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "3B4467B1-4CEC-C554-C33B-F7AE1A2E7913";
+	rename -uid "E797E2F2-4730-C0D9-BAB1-CFBAC4C02C0F";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "76A5214D-405A-813C-6186-12AE36C62517";
 	setAttr ".g" yes;
@@ -38933,7 +38933,7 @@ createNode polyDelEdge -n "polyDelEdge9";
 	setAttr ".ics" -type "componentList" 84 "e[70:80]" "e[393]" "e[397]" "e[400]" "e[403]" "e[406]" "e[409]" "e[412]" "e[415]" "e[418]" "e[421]" "e[423]" "e[1258:1268]" "e[1581]" "e[1585]" "e[1588]" "e[1591]" "e[1594]" "e[1597]" "e[1600]" "e[1603]" "e[1606]" "e[1609]" "e[1611]" "e[1764:1774]" "e[2087]" "e[2091]" "e[2094]" "e[2097]" "e[2100]" "e[2103]" "e[2106]" "e[2109]" "e[2112]" "e[2115]" "e[2117]" "e[2270:2280]" "e[2593]" "e[2597]" "e[2600]" "e[2603]" "e[2606]" "e[2609]" "e[2612]" "e[2615]" "e[2618]" "e[2621]" "e[2623]" "e[2776:2786]" "e[3099]" "e[3103]" "e[3106]" "e[3109]" "e[3112]" "e[3115]" "e[3118]" "e[3121]" "e[3124]" "e[3127]" "e[3129]" "e[3282:3292]" "e[3605]" "e[3609]" "e[3612]" "e[3615]" "e[3618]" "e[3621]" "e[3624]" "e[3627]" "e[3630]" "e[3633]" "e[3635]" "e[4470:4480]" "e[4793]" "e[4797]" "e[4800]" "e[4803]" "e[4806]" "e[4809]" "e[4812]" "e[4815]" "e[4818]" "e[4821]" "e[4823]";
 	setAttr ".cv" yes;
 createNode mayaUsdLayerManager -n "mayaUsdLayerManager1";
-	rename -uid "F2AD1521-4902-228D-E6CB-4587311CA911";
+	rename -uid "342AB00D-4092-28E9-0A18-6CA7F9BA246F";
 	setAttr ".sst" -type "string" "";
 select -ne :time1;
 	setAttr ".o" 1;
